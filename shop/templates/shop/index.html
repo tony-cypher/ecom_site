@@ -1,0 +1,78 @@
+{% extends 'shop/base.html' %}
+
+{% block content %}
+
+
+<div class="row my-4">
+    <div class="col-md-12">
+        <form class="card card-sm">
+            <div class="card-body row no-gytters align-items-center">
+                <div class="col">
+                    <input type="search" name="item_name" placeholder="Search for Products"
+                        class="form-control form-control-borderless">
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-success" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div id="store" class="row">
+    {% for product in product_objects %}
+    <div class="col-md-3">
+        <div class="card">
+            <img src="{{ product.image }}" class="card-img-top" alt="">
+            <div class="card-body">
+                <div id="nm{{ product.id }}" class="card-title">{{ product.title }}</div>
+                <div id="price{{ product.id }}" class="card-text">{{ product.price }}</div>
+
+                <a class="btn btn-warning" href="{% url 'detail' product.id %}">View</a>
+                <button id="{{ product.id }}" class="btn btn-warning atc" href="#">Add to cart</button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<div class="row my-5 pagin">
+    <div class="col-md-3 offset-md-4">
+        <ul class="pagination justify-content-center">
+            {% if product_objects.has_previous %}
+            <li class="page-item">
+                <a href="?page={{ product_objects.previous_page_number }}" class="page-link">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a href="?page=1" class="page-link">
+                    1
+                </a>
+            </li>
+            {% endif %}
+            <li class="page-item">
+                <a href="" class="page-link active">
+                    {{ product_objects.number }}
+                </a>
+            </li>
+
+
+            {% if product_objects.has_next %}
+            <li class="page-item">
+                <a href="?page={{ product_objects.next_page_number }}" class="page-link">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a href="?page={{ product_objects.paginator.num_pages }}" class="page-link">Last</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+
+
+{% endblock %}

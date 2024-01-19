@@ -1,0 +1,59 @@
+{% extends 'shop/base.html' %}
+
+{% block content %}
+
+<h1>Checkout page</h1>
+
+<div class="container">
+    <div class="row my-5">
+        <div class="col-md-12">
+            <ol id="item_list" class="list-group list-group-numbered">
+                <!-- js html-->
+            </ol>
+            <ul id="item_total" class="list-group list-group-flush">
+                <!-- js html -->
+            </ul>
+        </div>
+    </div>
+    <div class="row my-5">
+        <div class="col-md-12">
+            <form class="row g-3" method="POST">
+                {% csrf_token %}
+                <input type="hidden" id="items" name="items">
+                <div class="col-md-6">
+                    <label for="name" class="form-label">Name</label>
+                    <input name="name" type="text" class="form-control" id="name" placeholder="John">
+                </div>
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Email</label>
+                    <input name="email" type="email" class="form-control" id="email" placeholder="john.mail.com">
+                </div>
+                <div class="col-12">
+                    <label for="address" class="form-label">Address</label>
+                    <input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St">
+                </div>
+                <div class="col-md-6">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" class="form-control" id="city" name="city">
+                </div>
+                <div class="col-md-4">
+                    <label for="state" class="form-label">State</label>
+                    <input type="text" class="form-control" id="state" name="state">
+                </div>
+                <div class="col-md-2">
+                    <label for="zip" class="form-label">Zip</label>
+                    <input type="text" class="form-control" id="zip" name="zip">
+                </div>
+                <div class="col-md-2">
+                    <label for="total" class="form-label">Total Amount</label>
+                    <input readonly="true" type="text" class="form-control" id="total" name="total">
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Place Order</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+#store .card {
+    margin: 10px 0;
+}
+
+#store .card-text {
+    color: #008000;
+    font-weight: 600;
+}
+
+#store .card-title {
+    font-weight: 900;
+}
+
+#store .card img {
+    padding: 5px;
+    height: 180px;
+}
