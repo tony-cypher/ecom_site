@@ -4,10 +4,9 @@ if (localStorage.getItem('cart') == null) {
     cart = JSON.parse(localStorage.getItem('cart'));
 }
 
-// ------------------  Adding to card functionality  ----------------//
+// ------------------  Adding to cart functionality  ----------------//
 
 $(document).on('click', '.atc', function () {
-    console.log('The add to cart button is clicked')
     var item_id = this.id.toString();
     console.log(item_id);
 
